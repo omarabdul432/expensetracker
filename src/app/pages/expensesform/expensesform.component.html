@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-6">
+        <h5 class="text-center">Expense Tracker</h5>
+
+        <form [formGroup]="expenseform" (submit)="onSubmit()">
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" name="price" placeholder="Price" class="form-control" formControlName="price">
+                @if(expenseform.get('price')?.hasError('required') && expenseform.get('price')?.touched){
+                    <span class="text-danger fw-bold">price is required!</span>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" placeholder="Title" class="form-control" formControlName="title">
+                @if(expenseform.get('title')?.hasError('required') && expenseform.get('title')?.touched){
+                    <span class="text-danger fw-bold">Title is required!</span>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="d-flex gap-3">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" (click)="onBack()">Back</button>
+                
+            </div>
+        </form>
+    </div>
+</div>
